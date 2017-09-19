@@ -1,0 +1,49 @@
+<%unless current_user.shortened_urls.blank?%>
+<h3>Url list</h3>
+<table >
+	<tr>
+	<th>Long Url</th>
+	<th>Short Url</th>
+  <th>Total Visits</th>
+  <th>Expires At</th>
+	<th>Actions</th>
+    </tr>
+    <%current_user.shortened_urls.each do |url|%>
+    <tr>
+      <td><%= best_in_place url, :url, :as => :textarea , :url => url_path(id: url.id), :ok_button => 'Save', :cancel_button => 'Cancel'%></td>
+      <td><%=request.base_url()+'/'+url.unique_key%></td>
+      <td><%=url.use_count%></td>
+      <td><%=url.expires_at%></td>
+      <td><%= link_to 'Destroy', url_path(url),
+            data: {:confirm => 'Are you sure?'}, :method => :delete %></td>
+    </tr>
+  <%end%>
+</table>
+<%end%>
+
+<h3> Create New Short Url</h3>
+<%= form_tag(create_short_url_path) do %>
+  <%= text_area_tag(:long_url) %></br>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+<style type="text/css">  
+  html { height: 100% }  
+  body { height: 100%; margin: 0; padding: 0 }  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 50px;
+   }
+
+	table, th, td {
+	    border: 1px solid black;
+	    text-align: left;
+	}
+</style>  
+<script type="text/javascript">
+  $(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
+</script>
