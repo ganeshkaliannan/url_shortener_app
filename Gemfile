@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.4.2'
 gem 'rails', '~> 5.1.4'
 gem 'mysql2'
 gem 'puma', '~> 3.0'
@@ -13,6 +13,9 @@ gem 'shortener'
 gem 'best_in_place', '~> 3.0.1'
 gem "jquery-ui-rails"
 gem 'pg'
+gem 'barby',  '~> 0.6.2'
+gem 'rqrcode','~> 0.4.2'
+gem 'chunky_png'
 group :development, :test do
   gem 'byebug', platform: :mri
 end

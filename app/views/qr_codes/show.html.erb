@@ -1,0 +1,6 @@
+<p>
+  <strong>QR Code for ( <%= @qr_code.qr_text%> )</strong>
+  <img class="qr-code" src="<%= generate_qr(@qr_code.qr_text) %>"/>
+</p>
+
+<%= link_to 'Back', qr_codes_path %>

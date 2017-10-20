@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # root to: 'visitors#index'
   devise_for :users
   resources  :users
+  resources :qr_codes
   resources :urls , :only => [:destroy,:update]
 
   get 'home', to: 'urls#index'
@@ -9,7 +10,6 @@ Rails.application.routes.draw do
   post 'create_short_url', to: 'urls#create_short_url'
   post 'create_short_url', to: 'urls#create_short_url'
   # delete 'destroy', to: 'visitors#destroy_url'
-
 
 devise_scope :user do
   authenticated :user do
